@@ -9,7 +9,8 @@ class Person
     @parent_permission = parent_permission
   end
 
-  def of_age? #Had to change name per linters
+  def of_age?
+    # Had to change name per linters
     @age >= 18
   end
 
