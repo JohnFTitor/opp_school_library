@@ -21,7 +21,7 @@ class Person
   end
 end
 
-john_titor = Person.new('John Titor', 17, parent_permission: false)
+john_titor = Person.new('John Titor', 35, parent_permission: false)
 
 puts john_titor.name
 puts john_titor.age
