@@ -32,3 +32,5 @@ john_titor = Person.new(35, parent_permission: false, name: 'john titor third ki
 puts john_titor.correct_name
 new_john_titor = CapitalizeDecorator.new(john_titor)
 puts new_john_titor.correct_name
+trimmed_titor = TrimmerDecorator.new(new_john_titor)
+puts trimmed_titor.correct_name
