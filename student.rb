@@ -122,7 +122,7 @@ end
 
 puts '--Add rental through Person--'
 my_book1.add_rental(Date.new(2022, 4, 6), leonardo)
-zeeshan.add_rental(Date.new(2022,5,6), my_book2)
+zeeshan.add_rental(Date.new(2022, 5, 6), my_book2)
 
 puts '---Zeeshan Rented Books---'
 zeeshan.rents.each do |rent|
