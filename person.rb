@@ -1,4 +1,5 @@
 require_relative 'decorators'
+require_relative 'rental'
 
 class Person < Nameable
   attr_accessor :name, :age
@@ -27,4 +28,9 @@ class Person < Nameable
   def correct_name
     @name
   end
+
+  def add_rental(date, book)
+    rental = Rental.new(date, book, self)
+    @rents << rental unless @rents.include?(rental)
+  end 
 end

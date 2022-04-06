@@ -82,26 +82,50 @@ puts '---First Book People---'
 my_book1.rents.each do |rent|
   puts rent.person.name
 end
+
 puts '---Second Book People---'
 my_book2.rents.each do |rent|
   puts rent.person.name
 end
+
 puts '---Third Book People---'
 my_book3.rents.each do |rent|
   puts rent.person.name
 end
+
 puts '---John Rented Books---'
 john_titor.rents.each do |rent|
   puts rent.book.title
   puts rent.book.author
 end
+
 puts '---Zeeshan Rented Books---'
 zeeshan.rents.each do |rent|
   puts rent.book.title
   puts rent.book.author
 end
+
 puts '---Leonardo Rented Books---'
 leonardo.rents.each do |rent|
+  puts rent.book.title
+  puts rent.book.author
+end
+
+puts '--Add rental through book--'
+my_book1.add_rental(Date.new(2022, 4, 6), leonardo)
+
+puts '---Leonardo Rented Books---'
+leonardo.rents.each do |rent|
+  puts rent.book.title
+  puts rent.book.author
+end
+
+puts '--Add rental through Person--'
+my_book1.add_rental(Date.new(2022, 4, 6), leonardo)
+zeeshan.add_rental(Date.new(2022,5,6), my_book2)
+
+puts '---Zeeshan Rented Books---'
+zeeshan.rents.each do |rent|
   puts rent.book.title
   puts rent.book.author
 end
