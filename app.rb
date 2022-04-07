@@ -100,6 +100,29 @@ class App
     date = enter_date
     Rental.new(date, book, person)
   end
+
+  def list_rentals
+    list_all_people
+    loop do
+      id = int_check(message: 'Enter a person ID for whom you want to check its rentals')
+      selected_person = nil
+      @people.each do |person|
+        if person.id == id
+          selected_person = person
+          break
+        end
+      end
+      unless selected_person
+        puts "Couldn't find ID. Try again"
+        next
+      end
+      puts 'Rentals:'
+      selected_person.rents.each do |rent|
+        puts "[#{rent.date}] Title: #{rent.book.title}, Author: #{rent.book.author}"
+      end
+      break
+    end
+  end
 end
 
 testapp = App.new
@@ -114,3 +137,6 @@ testapp.create_person
 testapp.create_person
 
 testapp.create_rental
+testapp.create_rental
+
+testapp.list_rentals
