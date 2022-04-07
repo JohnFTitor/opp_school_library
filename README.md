@@ -7,7 +7,7 @@
 > Ruby library project that runs in the command line. Meant to understand the base principles of OPP programming while building an application with a new programming paradigm
 
 ### Requirements
--  You need to have Ruby and bundle install in order to run this files
+-  You need to have Ruby and bundle installed in order to run this files
 
 ## Built With
 
@@ -28,9 +28,17 @@ $ bundle install
 ```
 ### To run the code
 ```bash
-$ ruby person.rb
-$ ruby student.rb
-$ ruby teacher.rb
+$ ruby main.rb
+```
+
+Alternatively, you can run this command on your terminal to make ```main.rb``` executable
+```bash
+$ chmod 755 main.rb
+```
+
+And run it like this
+```bash
+$ ./main.rb
 ```
 
 ## Authors
