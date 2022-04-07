@@ -14,12 +14,14 @@ class App
   end
 
   def list_all_books
+    puts "\n"
     @books.each_with_index do |book, index|
       puts "[#{index + 1}] Title: #{book.title}, Author: #{book.author}"
     end
   end
 
   def list_all_people
+    puts "\n"
     @people.each_with_index do |person, index|
       if person.instance_of?(Student)
         puts "[#{index + 1}][Student] Id: #{person.id}, Name: #{person.name},
@@ -31,7 +33,9 @@ class App
     end
   end
 
-  def create_book(title, author)
+  def create_book
+    title = str_check(message: "Enter book's name")
+    author = str_check(message: "Enter book's author")
     book = Book.new(title, author)
     @books.push(book)
   end
@@ -61,6 +65,7 @@ class App
 
   def create_person
     loop do
+      puts "\n"
       puts 'Pick the type of person you want to create. Numeric values only: [1] Student or [2] Teacher'
       selection = gets.chomp
       person = nil
@@ -81,6 +86,7 @@ class App
   end
 
   def create_rental
+    puts "\n"
     if @books.empty? || @people.empty?
       puts 'Not enough parameters to create rental'
       return
@@ -100,14 +106,11 @@ testapp = App.new
 
 testapp.create_rental
 
-testapp.create_book('A', 'B')
-testapp.create_book('C', 'B')
-testapp.create_book('D', 'B')
-
-testapp.list_all_books
+testapp.create_book
+testapp.create_book
+testapp.create_book
 
 testapp.create_person
-
-testapp.list_all_people
+testapp.create_person
 
 testapp.create_rental

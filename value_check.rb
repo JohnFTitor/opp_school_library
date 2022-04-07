@@ -1,5 +1,6 @@
 module Checks
   def str_check(message: 'Enter your value', error: 'Wrong Value. Please enter again')
+    puts "\n"
     puts message
     str = gets.chomp
     loop do
@@ -12,6 +13,7 @@ module Checks
   end
 
   def int_check(message: 'Enter your value', error: 'Wrong Value. Please enter again')
+    puts "\n"
     puts message
     int = gets.chomp
     loop do
@@ -25,6 +27,7 @@ module Checks
   end
 
   def yes_or_not(message: 'Enter your option (Y/N)', error: 'Wrong Value. Please enter again')
+    puts "\n"
     option = true
     loop do
       puts message
@@ -43,6 +46,7 @@ module Checks
   end
 
   def index_in(array, message: 'Select by index', error: 'Index out of range. Pick again')
+    puts "\n"
     loop do
       index = int_check(message: message) - 1
       value = array[index]
@@ -53,10 +57,12 @@ module Checks
   end
 
   def enter_date
+    puts "\n"
     loop do
       puts 'Enter date in the following format YYYY/MM/DD'
       date = gets.chomp
-      return date if date.match(/([0-9]){4}\/([0-9]){2}\/([0-9]){2}/)
+      return date if date.match(%r{([0-9]){4}/([0-9]){2}/([0-9]){2}})
+
       puts 'Wrong input'
     end
   end
