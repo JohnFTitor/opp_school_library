@@ -2,8 +2,11 @@ require_relative 'book'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'classroom'
+require_relative 'value_check'
 
 class App
+  include Checks
+
   def initialize
     @people = []
     @books = []
@@ -32,54 +35,44 @@ class App
     @books.push(book)
   end
 
+  def create_student
+    name = str_check(message: "What's the student's name?",
+                     error: 'Incorrect input. Please include a valid name')
+    age = int_check(message: "What's the student's age?",
+                    error: 'Incorrect input. Please introduce a valid age')
+    classroom = str_check(message: "What's the student's classroom?")
+    classroom = Classroom.new(classroom)
+    student_permission = true
+    student_permission = yes_or_not(message: 'Does the student have permission? (Y/N)') if age < 18
+    Student.new(classroom, age, parent_permission: student_permission, name: name)
+  end
+
+  def create_teacher
+    name = str_check(message: "What's the teacher's name?",
+                     error: 'Incorrect input. Please include a valid name')
+    age = int_check(message: "What's the teacher's age?",
+                    error: 'Incorrect input. Please introduce a valid age')
+    specialization = str_check(message: "What's the teacher's specialization?")
+    Teacher.new(specialization, age, name: name)
+  end
+
+  private :create_student, :create_teacher
+
   def create_person
     loop do
       puts 'Pick the type of person you want to create. Numeric values only: [1] Student or [2] Teacher'
       selection = gets.chomp
       case selection
       when '1'
-        puts "What's the student's name?"
-        name = gets.chomp
-        loop do
-          break if name.length.positive?
-
-          puts 'Incorrect input. Please include a valid name'
-          name = gets.chomp
-        end
-        puts "What's the student's age?"
-        age = gets.chomp
-        loop do
-          age = age.to_i
-          break if age.positive?
-
-          puts 'Incorrect input. Please include a valid age'
-          age = gets.chomp
-        end
-        puts "What's the student's classroom?"
-        classroom = Classroom.new(gets.chomp)
-        student_permission = true
-        loop do
-          puts 'Does the student has permision? (Y/N)'
-          permision = gets.chomp.downcase
-          case permision
-          when 'n'
-            student_permission = false
-            break
-          when 'y'
-            break
-          else
-            puts 'Incorrect Input. Please type a valid value'
-          end
-        end
-        student = Student.new(classroom, age, parent_permission: student_permission, name: name)
+        student = create_student
         @people << student
         break
       when '2'
-        puts 'Nice again'
+        teacher = create_teacher
+        @people << teacher
         break
       else
         puts 'Pick a proper value'
-        puts '-------------------'
       end
     end
   end
