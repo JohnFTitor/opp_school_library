@@ -1,8 +1,5 @@
 require_relative 'person'
-require_relative 'classroom'
-require_relative 'book'
 require_relative 'rental'
-require 'date'
 
 class Student < Person
   attr_accessor :classroom
