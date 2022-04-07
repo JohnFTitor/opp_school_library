@@ -24,12 +24,13 @@ class App
     puts "\n"
     @people.each_with_index do |person, index|
       if person.instance_of?(Student)
-        puts "[#{index + 1}][Student] Id: #{person.id}, Name: #{person.name},
-         Age: #{person.age}, Classroom: #{person.classroom.label}"
+        print "[#{index + 1}][Student] Id: #{person.id}, Name: #{person.name}, "
+        print "Age: #{person.age}, Classroom: #{person.classroom.label}"
       else
-        puts "[#{index + 1}][Teacher] Id: #{person.id}, Name: #{person.name}, Age: #{person.age},
-         Specialization: #{person.specialization}"
+        print "[#{index + 1}][Teacher] Id: #{person.id}, Name: #{person.name}, "
+        print "Age: #{person.age}, Specialization: #{person.specialization}"
       end
+      puts "\n"
     end
   end
 
@@ -124,19 +125,3 @@ class App
     end
   end
 end
-
-testapp = App.new
-
-testapp.create_rental
-
-testapp.create_book
-testapp.create_book
-testapp.create_book
-
-testapp.create_person
-testapp.create_person
-
-testapp.create_rental
-testapp.create_rental
-
-testapp.list_rentals
