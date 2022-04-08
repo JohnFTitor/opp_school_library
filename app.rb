@@ -82,7 +82,6 @@ class App
 
       @people << person
       puts 'Person added succesfully'
-      break
     end
   end
 
